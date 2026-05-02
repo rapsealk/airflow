@@ -51,6 +51,10 @@ from airflow.sdk.definitions.asset import (
 )
 from airflow.sdk.definitions.asset.decorators import asset as asset
 from airflow.sdk.definitions.asset.metadata import Metadata as Metadata
+from airflow.sdk.definitions.callback import (
+    AsyncCallback as AsyncCallback,
+    SyncCallback as SyncCallback,
+)
 from airflow.sdk.definitions.connection import Connection as Connection
 from airflow.sdk.definitions.context import (
     Context as Context,
@@ -58,6 +62,10 @@ from airflow.sdk.definitions.context import (
     get_parsing_context as get_parsing_context,
 )
 from airflow.sdk.definitions.dag import DAG as DAG, dag as dag
+from airflow.sdk.definitions.deadline import (
+    DeadlineAlert as DeadlineAlert,
+    DeadlineReference as DeadlineReference,
+)
 from airflow.sdk.definitions.decorators import setup as setup, task as task, teardown as teardown
 from airflow.sdk.definitions.decorators.task_group import task_group as task_group
 from airflow.sdk.definitions.edges import EdgeModifier as EdgeModifier, Label as Label
@@ -116,6 +124,7 @@ __all__ = [
     "AssetAny",
     "AssetOrTimeSchedule",
     "AssetWatcher",
+    "AsyncCallback",
     "BaseAsyncOperator",
     "BaseBranchOperator",
     "BaseHook",
@@ -133,6 +142,8 @@ __all__ = [
     "CronPartitionTimetable",
     "DAG",
     "DagRunState",
+    "DeadlineAlert",
+    "DeadlineReference",
     "DeltaDataIntervalTimetable",
     "DeltaTriggerTimetable",
     "EdgeModifier",
@@ -154,6 +165,7 @@ __all__ = [
     "RetryRule",
     "SecretCache",
     "SkipMixin",
+    "SyncCallback",
     "StartOfDayMapper",
     "StartOfHourMapper",
     "StartOfMonthMapper",
