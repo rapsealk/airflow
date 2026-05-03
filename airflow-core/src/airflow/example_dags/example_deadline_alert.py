@@ -53,7 +53,7 @@ with DAG(
 
     @task
     def hello_deadline():
-        log.info("Hello from a DAG with a deadline!")
+        log.info("Hello from a Dag with a deadline!")
 
     hello_deadline()
 # [END example_deadline_alert]
