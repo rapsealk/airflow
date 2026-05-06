@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Example DAG demonstrating :class:`~airflow.sdk.DeadlineAlert` usage."""
+"""Example Dag demonstrating :class:`~airflow.sdk.DeadlineAlert` usage."""
 
 from __future__ import annotations
 
