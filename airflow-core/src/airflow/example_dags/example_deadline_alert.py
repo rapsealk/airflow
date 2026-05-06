@@ -19,6 +19,7 @@
 from __future__ import annotations
 
 import logging
+import time
 from datetime import timedelta
 
 import pendulum
@@ -38,14 +39,14 @@ async def notify_deadline_missed(**kwargs):
 
 with DAG(
     dag_id="example_deadline_alert",
-    description="Demonstrates DeadlineAlert with DAGRUN_LOGICAL_DATE reference.",
+    description="Demonstrates DeadlineAlert with DAGRUN_QUEUED_AT reference.",
     schedule=None,
     start_date=pendulum.datetime(2025, 1, 1, tz="UTC"),
     catchup=False,
     tags=["example", "deadline"],
     deadline=DeadlineAlert(
-        reference=DeadlineReference.DAGRUN_LOGICAL_DATE,
-        interval=timedelta(hours=1),
+        reference=DeadlineReference.DAGRUN_QUEUED_AT,
+        interval=timedelta(seconds=30),
         callback=AsyncCallback(notify_deadline_missed),
         name="example_deadline",
     ),
@@ -54,6 +55,9 @@ with DAG(
     @task
     def hello_deadline():
         log.info("Hello from a Dag with a deadline!")
+        # Sleep past the deadline so the example actually trips the alert
+        # when the Dag is triggered.
+        time.sleep(60)
 
     hello_deadline()
 # [END example_deadline_alert]
