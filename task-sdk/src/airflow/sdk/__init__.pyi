@@ -51,7 +51,10 @@ from airflow.sdk.definitions.asset import (
 )
 from airflow.sdk.definitions.asset.decorators import asset as asset
 from airflow.sdk.definitions.asset.metadata import Metadata as Metadata
-from airflow.sdk.definitions.callback import AsyncCallback as AsyncCallback
+from airflow.sdk.definitions.callback import (
+    AsyncCallback as AsyncCallback,
+    SyncCallback as SyncCallback,
+)
 from airflow.sdk.definitions.connection import Connection as Connection
 from airflow.sdk.definitions.context import (
     Context as Context,
@@ -168,6 +171,7 @@ __all__ = [
     "StartOfQuarterMapper",
     "StartOfWeekMapper",
     "StartOfYearMapper",
+    "SyncCallback",
     "TaskGroup",
     "TaskInstanceState",
     "TriggerRule",
