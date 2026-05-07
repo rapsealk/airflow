@@ -55,8 +55,7 @@ with DAG(
     @task
     def hello_deadline():
         log.info("Hello from a Dag with a deadline!")
-        # Sleep past the deadline so the example actually trips the alert
-        # when the Dag is triggered.
+        # Sleep past the deadline (sync, not a deferred sensor) to keep the demo focused on DeadlineAlert.
         time.sleep(60)
 
     hello_deadline()
